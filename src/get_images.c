@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	fill_image(char *line, t_game *game, int index)
+void	put_items(char *line, t_game *game, int index)
 {
 	int		j;
 
@@ -21,10 +21,30 @@ void	fill_image(char *line, t_game *game, int index)
 		else if (line[j] == 'E')
 			mlx_put_image_to_window(game->mlx, game->window, \
 		game->exit_img, j * 32, index * 32);
-		else if (line[j] == 'P')
-			mlx_put_image_to_window(game->mlx, game->window, \
-		game->player_img, j * 32, index * 32);
 		j++;
+	}
+}
+void	put_player(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map[i] != NULL)
+	{
+		j = 0;
+		while(game->map[i][j] != '\n')
+		{
+			if (game->map[i][j] == 'P')
+			{
+				mlx_put_image_to_window(game->mlx, game->window, \
+					game->player_img, j * 32, i * 32);
+				game->player_x = j;
+				game->player_y = i;
+			}
+			j++;
+		}	
+		i++;
 	}
 }
 
@@ -35,9 +55,10 @@ void	put_images(t_game *game)
 	i = 0;
 	while (game->map[i] != NULL)
 	{
-		fill_image(game->map[i], game, i);
+		put_items(game->map[i], game, i);
 		i++;
 	}
+	put_player(game);
 }
 
 int	get_images(t_game *game)

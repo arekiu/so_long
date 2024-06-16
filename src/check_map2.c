@@ -1,0 +1,58 @@
+#include "so_long.h"
+
+int	check_chars(t_game *game)
+{
+	int	p;
+	int	e;
+	int	c;
+	int	i;
+	int	len;
+
+	i = -1;
+	p = 0;
+	e = 0;
+	c = 0;
+	len = (int)ft_strlen(game->map[0]) - 1;
+	while (i++ < game->rows - 1)
+	{
+		if (game->map[i][0] != '1' || game->map[i][len - 1] != '1' )
+			return (-1);
+		if (ft_strchr(game->map[i], 'P') != 0)
+			p = p + 1;
+		if (ft_strchr(game->map[i], 'E') != 0)
+			e = e + 1;
+		if (ft_strchr(game->map[i], 'C') != 0)
+			c = c + 1;
+	}
+	if ((p != 1) || (e != 1) || (c < 1))
+		return (-1);
+	return (1);
+}
+
+int	check_values(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < game->rows)
+	{
+		if (i == 0 || i == game->rows - 1)
+		{
+			j = 0;
+			while (game->map[i][j] != '\n')
+			{
+				if (game->map[i][j] != '1')
+					return (-1);
+				j++;
+			}
+		}
+		else
+		{
+			if (check_chars(game) == -1)
+				return (-1);
+		}
+		i++;
+	}
+	return (1);
+}
