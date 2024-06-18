@@ -19,6 +19,11 @@ int	free_map(t_game *game)
 
 int	on_destroy(t_game *game)
 {
+	mlx_destroy_image(game->mlx, game->wall_img);
+	mlx_destroy_image(game->mlx, game->floor_img);
+	mlx_destroy_image(game->mlx, game->treasure_img);
+	mlx_destroy_image(game->mlx, game->exit_img);
+	mlx_destroy_image(game->mlx, game->player_img);
 	mlx_destroy_window(game->mlx, game->window);
 	//mlx_destroy_display(game->mlx);
 	free(game->mlx);
@@ -31,7 +36,7 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == 65307)
 		on_destroy(game);
 	if (keycode == 65361 || keycode == 65362 || keycode == 65363 \
-		|| keycode == 65361)
+		|| keycode == 65364)
 		move_player(keycode, game);
 	return (0);
 }
@@ -48,8 +53,10 @@ void	initialize_game(t_game *game)
 	game->map = NULL;
 	game->rows = 0;
 	game->cols = 0;
+	game->collectables = 0;
 	game->player_x = 0;
 	game->player_y = 0;
+	game->player_moves = 0;
 }
 
 int	main(int argc, char *argv[])
@@ -57,7 +64,6 @@ int	main(int argc, char *argv[])
 	t_game	new_game;
 
 	initialize_game(&new_game);
-
 	if (argc != 2)
 	{
 		ft_printf("%s", "Invalid number of arguments");
@@ -65,7 +71,7 @@ int	main(int argc, char *argv[])
 	}
 	if (check_map(argv[1], &new_game) == -1)
 	{
-		ft_printf("Impossible to play like this...");
+		ft_printf("Invalid map...");
 		return (1);
 	}
 	new_game.mlx = mlx_init();
@@ -78,8 +84,8 @@ int	main(int argc, char *argv[])
 	}
 	put_images(&new_game);
 	mlx_key_hook(new_game.window, key_hook, &new_game);
+	mlx_hook(new_game.window, 17, 0, on_destroy, &new_game);
 	mlx_loop(new_game.mlx);
-	
 	return (0);
 }
 

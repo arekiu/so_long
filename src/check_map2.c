@@ -1,5 +1,25 @@
 #include "so_long.h"
 
+void	count_collectables(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < game->rows)
+	{
+
+		j = 0;
+		while (game->map[i][j] != '\n')
+		{
+				if (game->map[i][j] == 'C')
+					game->collectables = game->collectables + 1;
+				j++;
+		}
+		i++;
+	}
+}
+
 int	check_chars(t_game *game)
 {
 	int	p;
@@ -54,5 +74,6 @@ int	check_values(t_game *game)
 		}
 		i++;
 	}
+	count_collectables(game);
 	return (1);
 }

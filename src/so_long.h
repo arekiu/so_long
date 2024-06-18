@@ -20,12 +20,15 @@ typedef struct s_game
 	void	*player_img;
 	int		player_x;
 	int		player_y;
+	int		player_moves;
+	int		collectables;
 }	t_game;
 
 int		check_map(char *map_name, t_game *game);
 int		get_images(t_game *game);
 void	put_images(t_game *game);
-void    move_player(int keycode, t_game *game);
+void	put_player(t_game *game);
+void	move_player(int keycode, t_game *game);
 int		free_map(t_game *game);
 int		check_values(t_game *game);
 int		check_chars(t_game *game);
