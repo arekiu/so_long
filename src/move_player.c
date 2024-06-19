@@ -17,8 +17,8 @@ void    move_player_up(t_game *game, int i, int j)
     game->player_moves = game->player_moves + 1;
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 32, i * 32);
-        ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
+		game->floor_img, j * 40, i * 40);
+    ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
 
 }
 
@@ -39,7 +39,7 @@ void    move_player_down(t_game *game, int i, int j)
     game->player_moves = game->player_moves + 1;
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 32, i * 32);
+		game->floor_img, j * 40, i * 40);
         ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
 
 }
@@ -61,7 +61,7 @@ void    move_player_left(t_game *game, int i, int j)
     game->player_moves = game->player_moves + 1;
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 32, i * 32);
+		game->floor_img, j * 40, i * 40);
         ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
 
 }
@@ -83,7 +83,7 @@ void    move_player_right(t_game *game, int i, int j)
     game->player_moves = game->player_moves + 1;
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 32, i * 32);
+		game->floor_img, j * 40, i * 40);
         ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
 
 }

@@ -8,19 +8,19 @@ void	put_items(char *line, t_game *game, int index)
 	while (line[j] != '\n')
 	{
 		mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 32, index * 32);
+		game->floor_img, j * 40, index * 40);
 		if (line[j] == '1')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->wall_img, j * 32, index * 32);
+		game->wall_img, j * 40, index * 40);
 		/*else if (line[j] == '0')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 32, index * 32);*/
+		game->floor_img, j * 40, index * 40);*/
 		else if (line[j] == 'C')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->treasure_img, j * 32, index * 32);
+		game->treasure_img, j * 40, index * 40);
 		else if (line[j] == 'E')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->exit_img, j * 32, index * 32);
+		game->exit_img, j * 40, index * 40);
 		j++;
 	}
 }
@@ -38,7 +38,7 @@ void	put_player(t_game *game)
 			if (game->map[i][j] == 'P')
 			{
 				mlx_put_image_to_window(game->mlx, game->window, \
-					game->player_img, j * 32, i * 32);
+					game->player_img, j * 40, i * 40);
 				game->player_x = j;
 				game->player_y = i;
 			}
@@ -63,27 +63,24 @@ void	put_images(t_game *game)
 
 int	get_images(t_game *game)
 {
-	game->img_height = 32;
-	game->img_width = 32;
-
 	game->floor_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/floor.xpm", &game->img_width, &game->img_height);
+	"./assets/background_40x40.xpm", &game->img_width, &game->img_height);
 	if (game->floor_img == NULL)
 		return (-1);
 	game->wall_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/wall.xpm", &game->img_width, &game->img_height);
+	"./assets/Wall-1_40x40.xpm", &game->img_width, &game->img_height);
 	if (game->wall_img == NULL)
 		return (-1);
 	game->treasure_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/treasure.xpm", &game->img_width, &game->img_height);
+	"./assets/Book_40x40.xpm", &game->img_width, &game->img_height);
 	if (game->treasure_img == NULL)
 		return (-1);
 	game->exit_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/fire.xpm", &game->img_width, &game->img_height);
+	"./assets/Summoning-circle_40x40.xpm", &game->img_width, &game->img_height);
 	if (game->exit_img == NULL)
 		return (-1);
 	game->player_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/barrel.xpm", &game->img_width, &game->img_height);
+	"./assets/Nekomancer-chibi_40x40.xpm", &game->img_width, &game->img_height);
 	if (game->player_img == NULL)
 		return (-1);
 	return (0);

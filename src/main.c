@@ -25,7 +25,7 @@ int	on_destroy(t_game *game)
 	mlx_destroy_image(game->mlx, game->exit_img);
 	mlx_destroy_image(game->mlx, game->player_img);
 	mlx_destroy_window(game->mlx, game->window);
-	//mlx_destroy_display(game->mlx);
+	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	free_map(game);
 	exit(0);
@@ -57,6 +57,8 @@ void	initialize_game(t_game *game)
 	game->player_x = 0;
 	game->player_y = 0;
 	game->player_moves = 0;
+	game->img_height = 40;
+	game->img_width = 40;
 }
 
 int	main(int argc, char *argv[])
@@ -75,8 +77,8 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	new_game.mlx = mlx_init();
-	new_game.window = mlx_new_window(new_game.mlx, (new_game.cols) * 32, \
-		(new_game.rows) * 32, "so_long");
+	new_game.window = mlx_new_window(new_game.mlx, (new_game.cols) * 40, \
+		(new_game.rows) * 40, "so_long");
 	if(get_images(&new_game) == -1)
 	{
 		ft_printf("error with images");
