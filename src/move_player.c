@@ -2,10 +2,15 @@
 
 void    move_player_up(t_game *game, int i, int j)
 {
-    if (game->map[i - 1][j] == 'C')
+    if (game->map[i - 1][j] == 'E')
     {
-        game->collectables = game->collectables - 1;
+        if (game->collectables == 0)
+            ft_printf("You won!!!");
+        else
+            return;
     }
+    if (game->map[i - 1][j] == 'C')
+        game->collectables = game->collectables - 1;
     game->map[i][j] = '0';
     game->map[i - 1][j] = 'P';
     game->player_y = i - 1;
@@ -19,10 +24,15 @@ void    move_player_up(t_game *game, int i, int j)
 
 void    move_player_down(t_game *game, int i, int j)
 {
-    if (game->map[i + 1][j] == 'C')
+    if (game->map[i + 1][j] == 'E')
     {
-        game->collectables = game->collectables - 1;
+        if (game->collectables == 0)
+            ft_printf("You won!!!");
+        else
+            return;
     }
+    if (game->map[i + 1][j] == 'C')
+        game->collectables = game->collectables - 1;
     game->map[i][j] = '0';
     game->map[i + 1][j] = 'P';
     game->player_y = i + 1;
@@ -36,10 +46,15 @@ void    move_player_down(t_game *game, int i, int j)
 
 void    move_player_left(t_game *game, int i, int j)
 {
-    if (game->map[i][j - 1] == 'C')
+    if (game->map[i][j - 1] == 'E')
     {
-        game->collectables = game->collectables - 1;
+        if (game->collectables == 0)
+            ft_printf("You won!!!");
+        else
+            return;
     }
+    if (game->map[i][j - 1] == 'C')
+        game->collectables = game->collectables - 1;
     game->map[i][j] = '0';
     game->map[i][j - 1] = 'P';
     game->player_x = j - 1;
@@ -53,10 +68,15 @@ void    move_player_left(t_game *game, int i, int j)
 
 void    move_player_right(t_game *game, int i, int j)
 {
-    if (game->map[i][j + 1] == 'C')
+    if (game->map[i][j + 1] == 'E')
     {
-        game->collectables = game->collectables - 1;
+        if (game->collectables == 0)
+            ft_printf("You won!!!");
+        else
+            return;
     }
+    if (game->map[i][j + 1] == 'C')
+        game->collectables = game->collectables - 1;
     game->map[i][j] = '0';
     game->map[i][j + 1] = 'P';
     game->player_x = j + 1;
