@@ -26,7 +26,7 @@ void    move_player_in_direc(t_game *game, int off_x, int off_y)
         if (game->collectables == 0)
         {
             game->player_won = 1;
-            ft_printf("You won!!!");
+            won_game(game);
         }
         else
             game->player_won = 2;
@@ -50,15 +50,17 @@ void    move_player(int keycode, t_game *game)
 
     j = game->player_x;
     i = game->player_y;
-    if (keycode == 65362 && game->map[i - 1][j] != '1')
-        move_player_in_direc(game, 0, -1);
-    if (keycode == 65364 && game->map[i + 1][j] != '1')
-        move_player_in_direc(game, 0, 1);
-    if (keycode == 65361 && game->map[i][j - 1] != '1')
-        move_player_in_direc(game, -1, 0);
-    if (keycode == 65363 && game->map[i][j + 1] != '1')
-        move_player_in_direc(game, 1, 0);
-
+    if (game->player_won != 1)
+    {
+        if (keycode == 65362 && game->map[i - 1][j] != '1')
+            move_player_in_direc(game, 0, -1);
+        if (keycode == 65364 && game->map[i + 1][j] != '1')
+            move_player_in_direc(game, 0, 1);
+        if (keycode == 65361 && game->map[i][j - 1] != '1')
+            move_player_in_direc(game, -1, 0);
+        if (keycode == 65363 && game->map[i][j + 1] != '1')
+            move_player_in_direc(game, 1, 0);
+    }
     //ft_printf("player position x:%d y:%d", j, i);
 }
 

@@ -45,5 +45,6 @@ int		check_access(t_game *game);
 void	flood_fill(t_game *game, char **map_copy, int x, int y);
 void	display_moves(t_game *game);
 void    move_player_in_direc(t_game *game, int off_x, int off_y);
+void	won_game(t_game *game);
 
 #endif
