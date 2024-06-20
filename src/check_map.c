@@ -74,6 +74,11 @@ static int	check_cols(t_game *game)
 		ft_printf("Invalid map size\n");
 		return (-1);
 	}
+	if(game->cols > 34 || game->rows > 17)
+	{
+		ft_printf("Map is too big\nMax width:34 and max height:17\n");
+		return (-1);
+	}
 	return (1);
 }
 
