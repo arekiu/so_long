@@ -19,6 +19,31 @@ void	count_collectables(t_game *game)
 		i++;
 	}
 }
+int	check_other(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < game->rows)
+	{
+
+		j = 0;
+		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
+		{
+				if (game->map[i][j] != 'C' && game->map[i][j] != 'E' \
+					&& game->map[i][j] != 'P' && game->map[i][j] != '0' \
+						&& game->map[i][j] != '1')
+				{
+					ft_printf("Invalid characters\n");
+					return (-1);
+				}
+				j++;
+		}
+		i++;
+	}
+	return (1);
+}
 
 int	check_chars(t_game *game)
 {
@@ -44,7 +69,7 @@ int	check_chars(t_game *game)
 		if (ft_strchr(game->map[i], 'C') != 0)
 			c = c + 1;
 	}
-	if ((p != 1) || (e != 1) || (c < 1))
+	if ((p != 1) || (e != 1) || (c < 1) || check_other(game) == -1)
 		return (-1);
 	return (1);
 }

@@ -70,12 +70,12 @@ int	main(int argc, char *argv[])
 	initialize_game(&new_game);
 	if (argc != 2)
 	{
-		ft_printf("%s", "Invalid number of arguments");
+		ft_printf("Error!!!\nInvalid number of arguments");
 		return (1);
 	}
 	if (check_map(argv[1], &new_game) == -1)
 	{
-		ft_printf("Invalid map...");
+		ft_printf("Error!!!\nInvalid map...");
 		return (1);
 	}
 	new_game.mlx = mlx_init();
@@ -83,7 +83,7 @@ int	main(int argc, char *argv[])
 		(new_game.rows) * 40, "so_long");
 	if(get_images(&new_game) == -1)
 	{
-		ft_printf("error with images");
+		ft_printf("Error!!!\nProblem charging images");
 		return (1);
 	}
 	put_images(&new_game);
