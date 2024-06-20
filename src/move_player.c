@@ -5,7 +5,10 @@ void    move_player_up(t_game *game, int i, int j)
     if (game->map[i - 1][j] == 'E')
     {
         if (game->collectables == 0)
+        {
+            game->player_won = 1;
             ft_printf("You won!!!");
+        }
         else
             return;
     }
@@ -25,7 +28,10 @@ void    move_player_down(t_game *game, int i, int j)
     if (game->map[i + 1][j] == 'E')
     {
         if (game->collectables == 0)
+        {
+            game->player_won = 1;
             ft_printf("You won!!!");
+        }
         else
             return;
     }
@@ -45,7 +51,10 @@ void    move_player_left(t_game *game, int i, int j)
     if (game->map[i][j - 1] == 'E')
     {
         if (game->collectables == 0)
+        {
+            game->player_won = 1;
             ft_printf("You won!!!");
+        }
         else
             return;
     }
@@ -65,7 +74,10 @@ void    move_player_right(t_game *game, int i, int j)
     if (game->map[i][j + 1] == 'E')
     {
         if (game->collectables == 0)
+        {
+            game->player_won = 1;
             ft_printf("You won!!!");
+        }
         else
             return;
     }

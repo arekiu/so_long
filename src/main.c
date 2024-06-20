@@ -14,6 +14,8 @@ int	free_map(t_game *game)
 	}
 	free(game->map);
 	game->map = NULL;
+	free(game->str_player_moves);
+	game->str_player_moves = NULL;
 	return (-1);
 }
 
@@ -24,6 +26,7 @@ int	on_destroy(t_game *game)
 	mlx_destroy_image(game->mlx, game->treasure_img);
 	mlx_destroy_image(game->mlx, game->exit_img);
 	mlx_destroy_image(game->mlx, game->player_img);
+	mlx_destroy_image(game->mlx, game->dead_img);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
@@ -37,7 +40,10 @@ int	key_hook(int keycode, t_game *game)
 		on_destroy(game);
 	if (keycode == 65361 || keycode == 65362 || keycode == 65363 \
 		|| keycode == 65364)
+	{
 		move_player(keycode, game);
+		display_moves(game);
+	}
 	return (0);
 }
 
@@ -61,6 +67,8 @@ void	initialize_game(t_game *game)
 	game->img_width = 40;
 	game->ava_collec = 0;
 	game->ava_exit = 0;
+	game->player_won = 0;
+	game->str_player_moves = ft_strdup("Moves: 0");
 }
 
 int	main(int argc, char *argv[])

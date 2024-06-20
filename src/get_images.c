@@ -24,7 +24,11 @@ void	put_items(char *line, t_game *game, int index)
 }
 void	put_player(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->window, \
+	if (game->player_won == 1)
+		mlx_put_image_to_window(game->mlx, game->window, \
+					game->dead_img, game->player_x * 40, game->player_y * 40);
+	else
+		mlx_put_image_to_window(game->mlx, game->window, \
 					game->player_img, game->player_x * 40, game->player_y * 40);
 }
 void	set_player_pos(t_game *game)
@@ -83,6 +87,10 @@ int	get_images(t_game *game)
 	game->player_img = mlx_xpm_file_to_image(game->mlx, \
 	"./assets/Nekomancer-chibi_40x40.xpm", &game->img_width, &game->img_height);
 	if (game->player_img == NULL)
+		return (-1);
+	game->dead_img = mlx_xpm_file_to_image(game->mlx, \
+	"./assets/dead.xpm", &game->img_width, &game->img_height);
+	if (game->dead_img == NULL)
 		return (-1);
 	return (0);
 }

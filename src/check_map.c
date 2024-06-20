@@ -97,7 +97,7 @@ int	check_map(char *map_name, t_game *game)
 	}
 	if (check_values(game) == -1 || check_access(game) == -1)
 	{
-		ft_printf("Unreachable items or worng values\n");
+		ft_printf("Unreachable items or wrong values\n");
 		free_map(game);
 		return (-1);
 	}

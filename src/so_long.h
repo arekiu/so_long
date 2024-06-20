@@ -18,12 +18,15 @@ typedef struct s_game
 	void	*treasure_img;
 	void	*exit_img;
 	void	*player_img;
+	void	*dead_img;
 	int		player_x;
 	int		player_y;
 	int		player_moves;
+	char	*str_player_moves;
 	int		collectables;
 	int		ava_collec;
 	int		ava_exit;
+	int		player_won;
 }	t_game;
 
 int		check_map(char *map_name, t_game *game);
@@ -35,7 +38,8 @@ void	move_player(int keycode, t_game *game);
 int		free_map(t_game *game);
 int		check_values(t_game *game);
 int		check_chars(t_game *game);
-int check_access(t_game *game);
-void flood_fill(t_game *game, char **map_copy, int x, int y);
+int		check_access(t_game *game);
+void	flood_fill(t_game *game, char **map_copy, int x, int y);
+void	display_moves(t_game *game);
 
 #endif
