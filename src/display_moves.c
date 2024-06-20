@@ -34,6 +34,6 @@ void	display_moves(t_game *game)
 		return;
 	free(game->str_player_moves);
 	game->str_player_moves = new_str;
-	draw_rectangle(game, 10, 3, 100, 20, 0x000000);
+	draw_rectangle(game, 10, 3, 80, 20, 0x000000);
 	mlx_string_put(game->mlx, game->window, 18, 18, 0x00FF0000, game->str_player_moves);
 }

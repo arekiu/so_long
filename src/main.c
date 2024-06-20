@@ -27,6 +27,7 @@ int	on_destroy(t_game *game)
 	mlx_destroy_image(game->mlx, game->exit_img);
 	mlx_destroy_image(game->mlx, game->player_img);
 	mlx_destroy_image(game->mlx, game->dead_img);
+	mlx_destroy_image(game->mlx, game->mixed_img);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
@@ -56,12 +57,15 @@ void	initialize_game(t_game *game)
 	game->treasure_img = NULL;
 	game->exit_img = NULL;
 	game->player_img = NULL;
+	game->mixed_img = NULL;
 	game->map = NULL;
 	game->rows = 0;
 	game->cols = 0;
 	game->collectables = 0;
 	game->player_x = 0;
 	game->player_y = 0;
+	game->exit_x = 0;
+	game->exit_y = 0;
 	game->player_moves = 0;
 	game->img_height = 40;
 	game->img_width = 40;

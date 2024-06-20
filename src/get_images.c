@@ -27,6 +27,9 @@ void	put_player(t_game *game)
 	if (game->player_won == 1)
 		mlx_put_image_to_window(game->mlx, game->window, \
 					game->dead_img, game->player_x * 40, game->player_y * 40);
+	else if (game->player_won == 2)
+		mlx_put_image_to_window(game->mlx, game->window, \
+					game->mixed_img, game->player_x * 40, game->player_y * 40);				
 	else
 		mlx_put_image_to_window(game->mlx, game->window, \
 					game->player_img, game->player_x * 40, game->player_y * 40);
@@ -46,6 +49,11 @@ void	set_player_pos(t_game *game)
 			{
 				game->player_x = j;
 				game->player_y = i;
+			}
+			if (game->map[i][j] == 'E')
+			{
+				game->exit_x = j;
+				game->exit_y = i;
 			}
 			j++;
 		}	
@@ -91,6 +99,10 @@ int	get_images(t_game *game)
 	game->dead_img = mlx_xpm_file_to_image(game->mlx, \
 	"./assets/dead.xpm", &game->img_width, &game->img_height);
 	if (game->dead_img == NULL)
+		return (-1);
+	game->mixed_img = mlx_xpm_file_to_image(game->mlx, \
+	"./assets/mixed.xpm", &game->img_width, &game->img_height);
+	if (game->mixed_img == NULL)
 		return (-1);
 	return (0);
 }

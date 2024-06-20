@@ -18,9 +18,12 @@ typedef struct s_game
 	void	*treasure_img;
 	void	*exit_img;
 	void	*player_img;
+	void	*mixed_img;
 	void	*dead_img;
 	int		player_x;
 	int		player_y;
+	int		exit_x;
+	int		exit_y;
 	int		player_moves;
 	char	*str_player_moves;
 	int		collectables;
@@ -41,5 +44,6 @@ int		check_chars(t_game *game);
 int		check_access(t_game *game);
 void	flood_fill(t_game *game, char **map_copy, int x, int y);
 void	display_moves(t_game *game);
+void    move_player_in_direc(t_game *game, int off_x, int off_y);
 
 #endif
