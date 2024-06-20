@@ -10,7 +10,7 @@ void	count_collectables(t_game *game)
 	{
 
 		j = 0;
-		while (game->map[i][j] != '\n')
+		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
 		{
 				if (game->map[i][j] == 'C')
 					game->collectables = game->collectables + 1;
@@ -28,7 +28,7 @@ int	check_chars(t_game *game)
 	int	i;
 	int	len;
 
-	i = -1;
+	i = 0;
 	p = 0;
 	e = 0;
 	c = 0;
@@ -60,7 +60,7 @@ int	check_values(t_game *game)
 		if (i == 0 || i == game->rows - 1)
 		{
 			j = 0;
-			while (game->map[i][j] != '\n')
+			while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
 			{
 				if (game->map[i][j] != '1')
 					return (-1);

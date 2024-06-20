@@ -89,5 +89,11 @@ int	check_map(char *map_name, t_game *game)
 		free_map(game);
 		return (-1);
 	}
+	if (check_access(game) == -1)
+	{
+		free_map(game);
+		return (-1);
+	}
+	
 	return (1);
 }

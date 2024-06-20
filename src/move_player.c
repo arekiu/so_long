@@ -18,8 +18,6 @@ void    move_player_up(t_game *game, int i, int j)
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
 		game->floor_img, j * 40, i * 40);
-    ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
-
 }
 
 void    move_player_down(t_game *game, int i, int j)
@@ -40,8 +38,6 @@ void    move_player_down(t_game *game, int i, int j)
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
 		game->floor_img, j * 40, i * 40);
-        ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
-
 }
 
 void    move_player_left(t_game *game, int i, int j)
@@ -62,8 +58,6 @@ void    move_player_left(t_game *game, int i, int j)
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
 		game->floor_img, j * 40, i * 40);
-        ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
-
 }
 
 void    move_player_right(t_game *game, int i, int j)
@@ -84,15 +78,10 @@ void    move_player_right(t_game *game, int i, int j)
     put_player(game);
     mlx_put_image_to_window(game->mlx, game->window, \
 		game->floor_img, j * 40, i * 40);
-        ft_printf("player position [%d][%d]\n", game->player_y, game->player_x);
-
 }
 
 void    move_player(int keycode, t_game *game)
 {
-    ft_printf("keycode is %d", keycode);
-    ft_printf("player position [%d][%d]", game->player_y, game->player_x);
-    ft_printf("LOS COLEC %d", game->collectables);
     int i;
     int j;
 

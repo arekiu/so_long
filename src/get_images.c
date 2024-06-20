@@ -5,16 +5,14 @@ void	put_items(char *line, t_game *game, int index)
 	int		j;
 
 	j = 0;
-	while (line[j] != '\n')
+	while (line[j] != '\n' && line[j] != '\0')
 	{
-		mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 40, index * 40);
 		if (line[j] == '1')
 			mlx_put_image_to_window(game->mlx, game->window, \
 		game->wall_img, j * 40, index * 40);
-		/*else if (line[j] == '0')
+		else if (line[j] == '0')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 40, index * 40);*/
+		game->floor_img, j * 40, index * 40);
 		else if (line[j] == 'C')
 			mlx_put_image_to_window(game->mlx, game->window, \
 		game->treasure_img, j * 40, index * 40);
@@ -26,6 +24,11 @@ void	put_items(char *line, t_game *game, int index)
 }
 void	put_player(t_game *game)
 {
+	mlx_put_image_to_window(game->mlx, game->window, \
+					game->player_img, game->player_x * 40, game->player_y * 40);
+}
+void	set_player_pos(t_game *game)
+{
 	int	i;
 	int	j;
 
@@ -33,12 +36,10 @@ void	put_player(t_game *game)
 	while (game->map[i] != NULL)
 	{
 		j = 0;
-		while(game->map[i][j] != '\n')
+		while(game->map[i][j] != '\n' && game->map[i][j] != '\0')
 		{
 			if (game->map[i][j] == 'P')
 			{
-				mlx_put_image_to_window(game->mlx, game->window, \
-					game->player_img, j * 40, i * 40);
 				game->player_x = j;
 				game->player_y = i;
 			}

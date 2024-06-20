@@ -1,7 +1,7 @@
 NAME		=	so_long
 
 SRC			=	$(addprefix src/, main.c check_map.c get_images.c move_player.c \
-				check_map2.c)
+				check_map2.c flood_fill.c)
 
 OBJ			= $(SRC:.c=.o)
 

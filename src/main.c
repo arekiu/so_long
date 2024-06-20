@@ -59,6 +59,8 @@ void	initialize_game(t_game *game)
 	game->player_moves = 0;
 	game->img_height = 40;
 	game->img_width = 40;
+	game->ava_collec = 0;
+	game->ava_exit = 0;
 }
 
 int	main(int argc, char *argv[])
