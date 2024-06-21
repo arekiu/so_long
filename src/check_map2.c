@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aschmidt <aschmidt@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/21 12:55:51 by aschmidt          #+#    #+#             */
+/*   Updated: 2024/06/21 13:07:03 by aschmidt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	count_collectables(t_game *game)
@@ -8,17 +20,17 @@ void	count_collectables(t_game *game)
 	i = 0;
 	while (i < game->rows)
 	{
-
 		j = 0;
 		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
 		{
-				if (game->map[i][j] == 'C')
-					game->collectables = game->collectables + 1;
-				j++;
+			if (game->map[i][j] == 'C')
+				game->collectables = game->collectables + 1;
+			j++;
 		}
 		i++;
 	}
 }
+
 int	check_other(t_game *game)
 {
 	int	i;
@@ -27,18 +39,17 @@ int	check_other(t_game *game)
 	i = 0;
 	while (i < game->rows)
 	{
-
 		j = 0;
 		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
 		{
-				if (game->map[i][j] != 'C' && game->map[i][j] != 'E' \
-					&& game->map[i][j] != 'P' && game->map[i][j] != '0' \
-						&& game->map[i][j] != '1' && game->map[i][j] != 'G')
-				{
-					ft_printf("Invalid characters\n");
-					return (-1);
-				}
-				j++;
+			if (game->map[i][j] != 'C' && game->map[i][j] != 'E' \
+				&& game->map[i][j] != 'P' && game->map[i][j] != '0' \
+					&& game->map[i][j] != '1' && game->map[i][j] != 'G')
+			{
+				ft_printf("Invalid characters\n");
+				return (-1);
+			}
+			j++;
 		}
 		i++;
 	}

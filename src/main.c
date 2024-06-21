@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aschmidt <aschmidt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/21 12:57:52 by aschmidt          #+#    #+#             */
+/*   Updated: 2024/06/21 13:55:53 by aschmidt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	free_map(t_game *game)
@@ -6,7 +18,7 @@ int	free_map(t_game *game)
 
 	i = 0;
 	if (!game->map)
-        return (-1);
+		return (-1);
 	while (game->map[i] != NULL)
 	{
 		free(game->map[i]);
@@ -98,15 +110,13 @@ int	main(int argc, char *argv[])
 	new_game.mlx = mlx_init();
 	new_game.window = mlx_new_window(new_game.mlx, (new_game.cols) * 40, \
 		(new_game.rows) * 40, "so_long");
-	if(get_images(&new_game) == -1)
+	if (get_images(&new_game) == -1)
 	{
 		ft_printf("Error!!!\nProblem charging images");
 		return (1);
 	}
-	put_images(&new_game);
 	mlx_key_hook(new_game.window, key_hook, &new_game);
 	mlx_hook(new_game.window, 17, 0, on_destroy, &new_game);
 	mlx_loop(new_game.mlx);
 	return (0);
 }
-

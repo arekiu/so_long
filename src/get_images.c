@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_images.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aschmidt <aschmidt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/21 12:57:06 by aschmidt          #+#    #+#             */
+/*   Updated: 2024/06/21 13:56:15 by aschmidt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	put_items(char *line, t_game *game, int index)
@@ -9,34 +21,36 @@ void	put_items(char *line, t_game *game, int index)
 	{
 		if (line[j] == '1')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->wall_img, j * 40, index * 40);
+				game->wall_img, j * 40, index * 40);
 		else if (line[j] == '0')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->floor_img, j * 40, index * 40);
+				game->floor_img, j * 40, index * 40);
 		else if (line[j] == 'C')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->treasure_img, j * 40, index * 40);
+				game->treasure_img, j * 40, index * 40);
 		else if (line[j] == 'E')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->exit_img, j * 40, index * 40);
+				game->exit_img, j * 40, index * 40);
 		else if (line[j] == 'G')
 			mlx_put_image_to_window(game->mlx, game->window, \
-		game->enemy_img, j * 40, index * 40);
+				game->enemy_img, j * 40, index * 40);
 		j++;
 	}
 }
+
 void	put_player(t_game *game)
 {
 	if (game->player_won == 1)
 		mlx_put_image_to_window(game->mlx, game->window, \
-					game->dead_img, game->player_x * 40, game->player_y * 40);
+			game->dead_img, game->player_x * 40, game->player_y * 40);
 	else if (game->player_won == 2)
 		mlx_put_image_to_window(game->mlx, game->window, \
-					game->mixed_img, game->player_x * 40, game->player_y * 40);				
+			game->mixed_img, game->player_x * 40, game->player_y * 40);
 	else
 		mlx_put_image_to_window(game->mlx, game->window, \
-					game->player_img, game->player_x * 40, game->player_y * 40);
+			game->player_img, game->player_x * 40, game->player_y * 40);
 }
+
 void	set_player_pos(t_game *game)
 {
 	int	i;
@@ -46,7 +60,7 @@ void	set_player_pos(t_game *game)
 	while (game->map[i] != NULL)
 	{
 		j = 0;
-		while(game->map[i][j] != '\n' && game->map[i][j] != '\0')
+		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
 		{
 			if (game->map[i][j] == 'P')
 			{
@@ -59,7 +73,7 @@ void	set_player_pos(t_game *game)
 				game->exit_y = i;
 			}
 			j++;
-		}	
+		}
 		i++;
 	}
 }
@@ -79,18 +93,28 @@ void	put_images(t_game *game)
 
 int	get_images(t_game *game)
 {
-	game->floor_img = mlx_xpm_file_to_image(game->mlx, "./assets/floor.xpm", &game->img_width, &game->img_height);
-	game->wall_img = mlx_xpm_file_to_image(game->mlx, "./assets/wall.xpm", &game->img_width, &game->img_height);
-	game->treasure_img = mlx_xpm_file_to_image(game->mlx, "./assets/book.xpm", &game->img_width, &game->img_height);
-	game->exit_img = mlx_xpm_file_to_image(game->mlx, "./assets/exit.xpm", &game->img_width, &game->img_height);
-	game->player_img = mlx_xpm_file_to_image(game->mlx, "./assets/cat.xpm", &game->img_width, &game->img_height);
-	game->dead_img = mlx_xpm_file_to_image(game->mlx, "./assets/dead.xpm", &game->img_width, &game->img_height);
-	game->mixed_img = mlx_xpm_file_to_image(game->mlx, "./assets/mixed.xpm", &game->img_width, &game->img_height);
-	game->enemy_img = mlx_xpm_file_to_image(game->mlx, "./assets/enemy.xpm", &game->img_width, &game->img_height);
-	if (!game->floor_img || !game->wall_img || !game->treasure_img || !game->exit_img || 
-	    !game->player_img || !game->dead_img || !game->mixed_img || !game->enemy_img)
+	game->floor_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/floor.xpm", &game->img_width, &game->img_height);
+	game->wall_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/wall.xpm", &game->img_width, &game->img_height);
+	game->treasure_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/book.xpm", &game->img_width, &game->img_height);
+	game->exit_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/exit.xpm", &game->img_width, &game->img_height);
+	game->player_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/cat.xpm", &game->img_width, &game->img_height);
+	game->dead_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/dead.xpm", &game->img_width, &game->img_height);
+	game->mixed_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/mixed.xpm", &game->img_width, &game->img_height);
+	game->enemy_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/enemy.xpm", &game->img_width, &game->img_height);
+	if (!game->floor_img || !game->wall_img || \
+		!game->treasure_img || !game->exit_img || !game->player_img \
+			|| !game->dead_img || !game->mixed_img || !game->enemy_img)
 		return (-1);
 	if (get_over_images(game) == -1)
 		return (-1);
+	put_images(game);
 	return (0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aschmidt <aschmidt@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/21 12:54:38 by aschmidt          #+#    #+#             */
+/*   Updated: 2024/06/21 13:01:41 by aschmidt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int	check_rows(char *map_name, t_game *game)
@@ -74,14 +86,13 @@ static int	check_cols(t_game *game)
 		ft_printf("Invalid map size\n");
 		return (-1);
 	}
-	if(game->cols > 34 || game->rows > 17)
+	if (game->cols > 34 || game->rows > 17)
 	{
 		ft_printf("Map is too big\nMax width:34 and max height:17\n");
 		return (-1);
 	}
 	return (1);
 }
-
 
 int	check_map(char *map_name, t_game *game)
 {

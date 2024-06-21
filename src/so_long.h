@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aschmidt <aschmidt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/21 12:56:54 by aschmidt          #+#    #+#             */
+/*   Updated: 2024/06/21 14:19:27 by aschmidt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../libft/src/libft.h"
-#include <mlx.h>
+# include "../libft/src/libft.h"
+# include <mlx.h>
 
 typedef struct s_game
 {
@@ -35,9 +47,19 @@ typedef struct s_game
 	int		ava_collec;
 	int		ava_exit;
 	int		player_won;
-	int     anim_frame;
-    int     anim_counter;
+	int		anim_frame;
+	int		anim_counter;
 }	t_game;
+
+typedef struct s_rect_params {
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	color;
+	int	i;
+	int	total_pixels;
+}	t_rect_params;
 
 int		check_map(char *map_name, t_game *game);
 int		get_images(t_game *game);
@@ -51,11 +73,11 @@ int		check_chars(t_game *game);
 int		check_access(t_game *game);
 void	flood_fill(t_game *game, char **map_copy, int x, int y);
 void	display_moves(t_game *game);
-void    move_player_in_direc(t_game *game, int off_x, int off_y);
+void	move_player_in_direc(t_game *game, int off_x, int off_y);
 void	won_game(t_game *game);
 void	lose_game(t_game *game);
 void	game_over(t_game *game);
 int		get_over_images(t_game *game);
-void    move_enemy(t_game *game);
+void	move_enemy(t_game *game);
 
 #endif
