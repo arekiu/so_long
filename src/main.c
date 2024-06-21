@@ -6,7 +6,7 @@
 /*   By: aschmidt <aschmidt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:57:52 by aschmidt          #+#    #+#             */
-/*   Updated: 2024/06/21 13:55:53 by aschmidt         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:23:16 by aschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,12 @@ int	main(int argc, char *argv[])
 {
 	t_game	new_game;
 
-	initialize_game(&new_game);
 	if (argc != 2)
 	{
 		ft_printf("Error!!!\nInvalid number of arguments");
 		return (1);
 	}
+	initialize_game(&new_game);
 	if (check_map(argv[1], &new_game) == -1)
 	{
 		ft_printf("Error!!!\nInvalid map...");
