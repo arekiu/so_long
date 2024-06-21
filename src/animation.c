@@ -6,7 +6,7 @@
 /*   By: aschmidt <aschmidt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:50:07 by aschmidt          #+#    #+#             */
-/*   Updated: 2024/06/21 14:46:03 by aschmidt         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:02:08 by aschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	get_over_images(t_game *game)
 {
 	game->anim0_img = mlx_xpm_file_to_image(game->mlx, \
 		"./assets/grave0.xpm", &game->img_width, &game->img_height);
-	game->anim1_img = mlx_xpm_file_to_image(game->mlx, "./assets\
-		/grave1.xpm", &game->img_width, &game->img_height);
-	game->anim2_img = mlx_xpm_file_to_image(game->mlx, "./assets\
-		/grave2.xpm", &game->img_width, &game->img_height);
-	game->anim3_img = mlx_xpm_file_to_image(game->mlx, "./assets/\
-		grave3.xpm", &game->img_width, &game->img_height);
+	game->anim1_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/grave1.xpm", &game->img_width, &game->img_height);
+	game->anim2_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/grave2.xpm", &game->img_width, &game->img_height);
+	game->anim3_img = mlx_xpm_file_to_image(game->mlx, \
+		"./assets/grave3.xpm", &game->img_width, &game->img_height);
 	if (!game->anim0_img || !game->anim1_img \
 		|| !game->anim2_img || !game->anim3_img)
 		return (-1);
