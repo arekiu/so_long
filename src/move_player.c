@@ -14,6 +14,17 @@ void    redraw(t_game *game, int j, int i)
 		game->floor_img, j * 40, i * 40);
 }
 
+void    is_exit(t_game *game)
+{
+    if (game->collectables == 0)
+        {
+            game->player_won = 1;
+            won_game(game);
+        }
+    else
+        game->player_won = 2;
+}
+
 void    move_player_in_direc(t_game *game, int off_x, int off_y)
 {
     int i;
@@ -22,17 +33,14 @@ void    move_player_in_direc(t_game *game, int off_x, int off_y)
     j = game->player_x;
     i = game->player_y;
     if (game->map[i + off_y][j + off_x] == 'E')
-    {
-        if (game->collectables == 0)
-        {
-            game->player_won = 1;
-            won_game(game);
-        }
-        else
-            game->player_won = 2;
-    }
+        is_exit(game);
     else if (game->player_won != 1)
         game->player_won = 0;
+    if (game->map[i + off_y][j + off_x] == 'G')
+    {
+        game_over(game);
+        return ;
+    }
     if (game->map[i + off_y][j + off_x] == 'C')
         game->collectables -= 1;
     game->map[i][j] = '0';
@@ -61,7 +69,6 @@ void    move_player(int keycode, t_game *game)
         if (keycode == 65363 && game->map[i][j + 1] != '1')
             move_player_in_direc(game, 1, 0);
     }
-    //ft_printf("player position x:%d y:%d", j, i);
 }
 
 //up 65362

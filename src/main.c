@@ -28,6 +28,11 @@ int	on_destroy(t_game *game)
 	mlx_destroy_image(game->mlx, game->player_img);
 	mlx_destroy_image(game->mlx, game->dead_img);
 	mlx_destroy_image(game->mlx, game->mixed_img);
+	mlx_destroy_image(game->mlx, game->enemy_img);
+	mlx_destroy_image(game->mlx, game->anim0_img);
+	mlx_destroy_image(game->mlx, game->anim1_img);
+	mlx_destroy_image(game->mlx, game->anim2_img);
+	mlx_destroy_image(game->mlx, game->anim3_img);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);

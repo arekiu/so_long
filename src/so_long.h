@@ -20,6 +20,11 @@ typedef struct s_game
 	void	*player_img;
 	void	*mixed_img;
 	void	*dead_img;
+	void	*enemy_img;
+	void	*anim0_img;
+	void	*anim1_img;
+	void	*anim2_img;
+	void	*anim3_img;
 	int		player_x;
 	int		player_y;
 	int		exit_x;
@@ -30,6 +35,8 @@ typedef struct s_game
 	int		ava_collec;
 	int		ava_exit;
 	int		player_won;
+	int     anim_frame;
+    int     anim_counter;
 }	t_game;
 
 int		check_map(char *map_name, t_game *game);
@@ -46,5 +53,8 @@ void	flood_fill(t_game *game, char **map_copy, int x, int y);
 void	display_moves(t_game *game);
 void    move_player_in_direc(t_game *game, int off_x, int off_y);
 void	won_game(t_game *game);
+void	lose_game(t_game *game);
+void	game_over(t_game *game);
+int		get_over_images(t_game *game);
 
 #endif

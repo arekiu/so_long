@@ -33,7 +33,7 @@ int	check_other(t_game *game)
 		{
 				if (game->map[i][j] != 'C' && game->map[i][j] != 'E' \
 					&& game->map[i][j] != 'P' && game->map[i][j] != '0' \
-						&& game->map[i][j] != '1')
+						&& game->map[i][j] != '1' && game->map[i][j] != 'G')
 				{
 					ft_printf("Invalid characters\n");
 					return (-1);

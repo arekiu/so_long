@@ -46,3 +46,12 @@ void	won_game(t_game *game)
 	draw_rectangle(game, 100, 3, 360, 20, 0x000000);
 	mlx_string_put(game->mlx, game->window, 108, 18, 0x00FF0000, message);
 }
+
+void	lose_game(t_game *game)
+{
+	char *message;
+
+	message = "Bad luck! :(";
+	draw_rectangle(game, 100, 3, 100, 20, 0x000000);
+	mlx_string_put(game->mlx, game->window, 108, 18, 0x00FF0000, message);
+}
