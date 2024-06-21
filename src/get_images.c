@@ -76,33 +76,17 @@ void	put_images(t_game *game)
 
 int	get_images(t_game *game)
 {
-	game->floor_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/background_40x40.xpm", &game->img_width, &game->img_height);
-	if (game->floor_img == NULL)
+	game->floor_img = mlx_xpm_file_to_image(game->mlx, "./assets/floor.xpm", &game->img_width, &game->img_height);
+	game->wall_img = mlx_xpm_file_to_image(game->mlx, "./assets/wall.xpm", &game->img_width, &game->img_height);
+	game->treasure_img = mlx_xpm_file_to_image(game->mlx, "./assets/book.xpm", &game->img_width, &game->img_height);
+	game->exit_img = mlx_xpm_file_to_image(game->mlx, "./assets/exit.xpm", &game->img_width, &game->img_height);
+	game->player_img = mlx_xpm_file_to_image(game->mlx, "./assets/cat.xpm", &game->img_width, &game->img_height);
+	game->dead_img = mlx_xpm_file_to_image(game->mlx, "./assets/dead.xpm", &game->img_width, &game->img_height);
+	game->mixed_img = mlx_xpm_file_to_image(game->mlx, "./assets/mixed.xpm", &game->img_width, &game->img_height);
+
+	if (!game->floor_img || !game->wall_img || !game->treasure_img || !game->exit_img || 
+	    !game->player_img || !game->dead_img || !game->mixed_img)
 		return (-1);
-	game->wall_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/Wall-1_40x40.xpm", &game->img_width, &game->img_height);
-	if (game->wall_img == NULL)
-		return (-1);
-	game->treasure_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/Book_40x40.xpm", &game->img_width, &game->img_height);
-	if (game->treasure_img == NULL)
-		return (-1);
-	game->exit_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/Summoning-circle_40x40.xpm", &game->img_width, &game->img_height);
-	if (game->exit_img == NULL)
-		return (-1);
-	game->player_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/Nekomancer-chibi_40x40.xpm", &game->img_width, &game->img_height);
-	if (game->player_img == NULL)
-		return (-1);
-	game->dead_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/dead.xpm", &game->img_width, &game->img_height);
-	if (game->dead_img == NULL)
-		return (-1);
-	game->mixed_img = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/mixed.xpm", &game->img_width, &game->img_height);
-	if (game->mixed_img == NULL)
-		return (-1);
+
 	return (0);
 }
