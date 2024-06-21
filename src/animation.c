@@ -30,7 +30,7 @@ void display_frame(t_game *game)
 int animation_handler(t_game *game)
 {
     game->anim_counter++;
-    if (game->anim_counter > 10000)
+    if (game->anim_counter > 1000)
     {
         game->anim_counter = 0;
         game->anim_frame++;

@@ -56,5 +56,6 @@ void	won_game(t_game *game);
 void	lose_game(t_game *game);
 void	game_over(t_game *game);
 int		get_over_images(t_game *game);
+void    move_enemy(t_game *game);
 
 #endif

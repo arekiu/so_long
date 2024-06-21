@@ -1,7 +1,7 @@
 NAME		=	so_long
 
 SRC			=	$(addprefix src/, main.c check_map.c get_images.c move_player.c \
-				check_map2.c flood_fill.c display_moves.c animation.c)
+				check_map2.c flood_fill.c display_moves.c animation.c move_enemy.c)
 
 OBJ			= $(SRC:.c=.o)
 
@@ -38,6 +38,6 @@ fclean: clean
 re: fclean all
 
 valgrind: $(NAME)
-	valgrind -s --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) map.ber
+	valgrind -s --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) map_bonus.ber
 
 .PHONY: all clean fclean re valgrind

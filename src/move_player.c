@@ -2,7 +2,7 @@
 
 void    redraw(t_game *game, int j, int i)
 {
-     put_player(game);
+    put_player(game);
     if (j == game->exit_x && i == game->exit_y && game->collectables != 0)
     {
         game->map[i][j] = 'E';
@@ -30,6 +30,7 @@ void    move_player_in_direc(t_game *game, int off_x, int off_y)
     int i;
     int j;
 
+    move_enemy(game);
     j = game->player_x;
     i = game->player_y;
     if (game->map[i + off_y][j + off_x] == 'E')
