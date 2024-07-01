@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschmidt <aschmidt@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: aschmidt <aschmidt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:54:38 by aschmidt          #+#    #+#             */
-/*   Updated: 2024/06/21 13:01:41 by aschmidt         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:22:25 by aschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	check_cols(t_game *game)
 	game->cols = (int)ft_strlen(game->map[i]) - 1;
 	while (game->map[i] != NULL)
 	{
-		if (((int)ft_strlen(game->map[0]) - 1) != game->cols || game->cols < 5)
+		if (((int)ft_strlen(game->map[i]) - 1) != game->cols || game->cols < 5)
 		{
 			ft_printf("Invalid map size\n");
 			return (-1);
