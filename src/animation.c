@@ -6,7 +6,7 @@
 /*   By: aschmidt <aschmidt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:50:07 by aschmidt          #+#    #+#             */
-/*   Updated: 2024/06/21 15:02:08 by aschmidt         ###   ########.fr       */
+/*   Updated: 2024/07/01 10:08:18 by aschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	display_frame(t_game *game)
 int	animation_handler(t_game *game)
 {
 	game->anim_counter++;
-	if (game->anim_counter > 3000)
+	if (game->anim_counter > 25000)
 	{
 		game->anim_counter = 0;
 		game->anim_frame++;
